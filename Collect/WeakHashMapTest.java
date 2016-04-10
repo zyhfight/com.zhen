@@ -21,6 +21,9 @@ public class WeakHashMapTest {
 		/*
 		 * 将 WeakHashMap中添加一个key-value对，
 		 * 该key是一个系统缓存的字符串对象。
+		 * "java"在程序加载时就分配常量内存空间，（即存在常量引用）
+		 * 此处还有匿名对象引用，（由多个引用同一内存空间）因此为强引用；
+		 * e.g（String a="abc"；既有常量引用，也有a引用）
 		 */
 		whm.put("java" , new String("中等"));    // ①
 		System.out.println(whm);
