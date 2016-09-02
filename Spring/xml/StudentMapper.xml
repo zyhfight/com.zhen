@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhen.mapper.StudentMapper">
+	<resultMap type="Student" id="STUDENT">
+		<result property="studentId" column="STUID"/>
+		<result property="studentName" column="STUNAME"/>
+		<result property="china" column="CHIAN"/>
+		<result property="math" column="MATH"/>
+		<result property="physical" column="PHYSICAL"/>
+		<result property="english" column="ENGLISH"/>
+	</resultMap>
+	<select id="getStudent" parameterType="int" resultType="Student">
+		select * from STUDENT where STUID=#{studentId}
+	</select>
+	<select id="getAllStudent" resultMap="STUDENT">
+		select * from STUDENT
+	</select>
+	
+	<insert id="addStudent" parameterType="Student">
+		insert into STUDENT(
+		STUID,
+		STUNAME,
+		CHIAN,
+		MATH,
+		PHYSICAL,
+		ENGLISH
+		)values(#{studentId},#{studentName},#{china},#{math},#{physical},#{english})
+	</insert>
+</mapper>
