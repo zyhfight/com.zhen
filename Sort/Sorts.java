@@ -86,7 +86,7 @@ public class Sorts {
 				for(j=i;j>=rise;j-=rise)
 				{
 					if(a[j-rise]>temp)
-						a[j]=a[j-1];
+						a[j]=a[j-rise];
 					else
 						break;
 				}
