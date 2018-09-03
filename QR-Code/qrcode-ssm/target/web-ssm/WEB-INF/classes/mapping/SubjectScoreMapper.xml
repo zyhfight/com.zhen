@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhen.dao.SubjectScoreDao">
+
+    <resultMap id="SubjectScore" type="com.zhen.model.SubjectScore">
+        <id column="student_id" property="studentId" jdbcType="VARCHAR"/>
+        <result column="Math" property="math" jdbcType="BIGINT"/>
+        <result column="Physical" property="physical" jdbcType="BIGINT"/>
+        <result column="English" property="english" jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="update_time" property="updateTime" jdbcType="DATE"/>
+        <result column="deleted" property="deleted" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="selectSubjectScoreById" parameterType="java.lang.String" resultMap="SubjectScore">
+          SELECT * FROM subject_score
+        WHERE student_id = #{studentId} AND deleted=0
+    </select>
+
+
+    <select id="selectAllSubjectScore"  resultMap="SubjectScore">
+        SELECT * FROM subject_score WHERE deleted=0
+    </select>
+
+    <update id="updateSubjectScore" parameterType="com.zhen.model.SubjectScore">
+        UPDATE subject_score
+        <set>
+            <if test="math != null">
+                Math = #{math},
+            </if>
+            <if test="physical != null">
+                Physical = #{physical},
+            </if>
+            <if test="english != null">
+                English = #{english},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        WHERE student_id=#{studentId}
+    </update>
+
+    <delete id="deleteSubjectScore" parameterType="java.lang.String">
+        DELETE FROM  subject_score WHERE student_id=#{studentId}
+    </delete>
+
+
+    <insert id="addSubjectScore" parameterType="com.zhen.model.SubjectScore">
+        INSERT INTO subject_score(student_id,Math,Physical,English,create_time,update_time)
+        VALUES (#{studentId},#{math},#{physical},#{english},#{createTime},#{updateTime})
+    </insert>
+
+
+</mapper>

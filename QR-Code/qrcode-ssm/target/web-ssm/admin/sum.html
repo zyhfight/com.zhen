@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+    <title>学生综合能力管理系统</title>
+
+    <link rel="stylesheet" type="text/css" href="../../static/util/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/util/css/sweet-alert.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/student_info.css" />
+
+
+</head>
+
+<body>
+
+
+<div>
+
+    <table class="table" border="1" style="margin-top: 8rem;width: 80%" align="center">
+        <thead>
+        <tr>
+            <th class="th">学号</th>
+            <th class="th">学科总分</th>
+            <th class="th">科技成果总分</th>
+            <th class="th">评价总分</th>
+            <th class="th">综合能力得分</th>
+        </tr>
+        </thead>
+
+        <tbody id="studentInfo">
+
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<script src="../../static/util/js/jquery.min.js"></script>
+<script src="../../static/util/js/bootstrap.min.js"></script>
+<script src="../../static/util/js/sweet-alert.min.js"></script>
+
+<script>
+
+    $(function() {
+
+        getAllSum();
+
+    });
+
+    function getAllSum() {
+        var userList="";
+        $.get("/admin/getAllSum",  {}, function (data) {
+            userList = eval("("+data.data+")");
+            if(userList.length==0){
+                swal("无信息");
+                return;
+            }
+            var html="";
+            for(var key in userList){
+                var obj = userList[key];
+                html+="<tr>" +"<td class='td'>"+obj.studentId+"</td>"+
+                    "<td class='td'>"+obj.subjectSumScore+"</td>"+
+                    "<td class='td'>"+obj.achievementSumScore+"</td>"+
+                    "<td class='td'>"+obj.evaluateSumScore+"</td>"+
+                    "<td class='td'>"+obj.sumScore+"</td>"+
+                    "</tr>"
+            }
+            document.getElementById("studentInfo").innerHTML=html;
+        });
+        console.log(userList);
+        return userList;
+    }
+
+</script>
+
+</body>
+
+</html>

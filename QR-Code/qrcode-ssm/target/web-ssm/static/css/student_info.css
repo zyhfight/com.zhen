@@ -1,0 +1,17 @@
+
+.th{
+    width:10%;
+    font-size: large;
+}
+
+.td{
+    width:10%;
+    font-size: medium;
+}
+
+.tk{
+    width:10%;
+    font-size: medium;
+    color: #2aabd2;
+    cursor: pointer;
+}

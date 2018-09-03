@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="static/util/js/ajaxUpload/jquery.js"></script>
+    <script type="text/javascript" src="static/util/js/ajaxUpload/ajaxfileupload.js"></script>
+    <script type="text/javascript">
+        function ajaxFileUpload() {
+
+            var test = document.getElementById("fileToUpload");
+
+            console.log(test);
+
+            $.ajaxFileUpload({
+                url : 'qr_code/upload_file',
+                secureuri : false,
+                fileElementId : 'fileToUpload',
+                dataType : 'json',
+                data : {username : $("#username").val()},
+                success : function(data, status) {
+
+                    var test = data.test;
+
+                    console.log(test);
+
+                    $('#viewImg').attr('src',data.picUrl);
+                },
+                error : function(data, status, e) {
+                    alert('上传出错');
+                }
+            });
+
+            return false;
+
+        }
+    </script>
+</head>
+<body>
+
+    <h1>选择图片后,点击按钮上传</h1>
+    <input id="fileToUpload" type="file" size="45" name="fileToUpload"
+           class="input">
+    <button class="button" onclick="ajaxFileUpload()">上传</button>
+    <br>
+    <img id="viewImg">
+
+</body>
+</html>
