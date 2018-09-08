@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: microservice-config-server-eureka
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/zyhxf2017/springCloudConfig
+          username: 
+          password: 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: 123

@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: microservice-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/zyhxf2017/springCloudConfig      # ÅäÖÃGit²Ö¿âµÄµØÖ·
+          username:                                                          # Git²Ö¿âµÄÕËºÅ
+          password:                                                     # Git²Ö¿âµÄÃÜÂë
+    bus:
+      trace:
+        enabled: true     # ¿ªÆôcloud busµÄ¸ú×Ù
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+management:
+  security:
+    enabled: false

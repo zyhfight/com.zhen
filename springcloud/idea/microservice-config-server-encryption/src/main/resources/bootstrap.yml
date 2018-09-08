@@ -1,0 +1,10 @@
+#encrypt:
+#  key: haha #对称加密密钥
+
+#非对称加密
+encrypt:
+  key-store:
+    location: classpath:/server.jks
+    password: letmein
+    alias: mytestkey
+    secret: changeme

@@ -1,0 +1,17 @@
+spring:
+  application:
+    #对应config server所获取的配置文件的{application}
+    name: cloudService
+  cloud:
+    config:
+      profile: dev
+      label: master
+      discovery:
+        enabled: true
+        service-id: microservice-config-server-eureka
+      username: user
+      password: 123
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
