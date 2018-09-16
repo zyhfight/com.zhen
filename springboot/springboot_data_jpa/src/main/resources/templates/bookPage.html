@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+</head>
+<body>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>writer</th>
+        <th>introduction</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="obj : ${datas}">
+        <td th:text="${obj.id}">${obj.id}</td>
+        <td th:text="${obj.name}">${obj.name}</td>
+        <td th:text="${obj.writer}">${obj.writer}</td>
+        <td th:text="${obj.introduction}">${obj.introduction}</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
