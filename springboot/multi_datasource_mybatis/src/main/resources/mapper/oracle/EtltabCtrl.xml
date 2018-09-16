@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring_boot.multi_datasource_mybatis.dao.oracle.EtlTabCtrlDao">
+
+	<select id="selectCount" resultType="integer">
+		select
+		count(1)
+		from ETL_TAB_CTRL
+	</select>
+
+</mapper>
