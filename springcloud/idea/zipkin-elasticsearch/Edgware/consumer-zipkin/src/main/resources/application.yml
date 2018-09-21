@@ -1,0 +1,21 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: microservice-consumer-user
+  sleuth:
+    sampler:
+      percentage: 1.0
+  rabbitmq:
+    addresses: localhost:5672
+    password: guest
+    username: guest
+  zipkin:
+    rabbitmq:
+      queue: zipkin
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
