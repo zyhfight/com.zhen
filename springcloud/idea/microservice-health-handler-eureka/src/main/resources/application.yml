@@ -1,0 +1,11 @@
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    instance-info-replication-interval-seconds: 10 #定时刷新本地实例信息时间间隔，默认30s
+
+
