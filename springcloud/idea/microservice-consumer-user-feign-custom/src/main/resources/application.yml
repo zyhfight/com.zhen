@@ -1,0 +1,44 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: microservice-consumer-user
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+prefer-ip-address: true
+
+# Spring Cloud Netflix 1.4.0（即从Spring Cloud Edgware）开始，Feign支持使用属性自定义Feign配置。默认属性优先级高于java代码配置方式，
+
+#使用下列属性可以使java代码配置方式优先级高于属性配置
+#feign:
+#  client:
+#    default-to-properties: false
+
+# 属相自定义指定名称的feign配置
+#feign:
+#  client:
+#    microservice-provider-user:
+#      connectTimeout: 5000
+#      readTimeOut: 5000
+#      loggerLevel: full
+#      errorDecoder:
+#      retryer:             #Spring Cloud Camden以及之后的版本中，Spring Cloud关闭了Feign重试，
+                            #而是使用Ribbon重试。如果自己再定义Feign的重试后，那么可能会造成重试特性的混乱
+#      requestInterceptors:
+#      decode404:
+
+# 通用配置，所有feign共享
+#feign:
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 5000
+#        readTimeOut: 5000
+#        loggerLevel: full
+#        errorDecoder:
+#        retryer:
+#        requestInterceptors:
+#        decode404:
