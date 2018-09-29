@@ -1,0 +1,23 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: microservice-consumer-user
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    #Feign接口日志级别设置为DEBUG，因为Feign的Logger.Level只对DEBUG做出响应
+    com.feign.demo.feign.UserFeignClient: DEBUG
+
+# 属性配置日志级别
+feign:
+  client:
+    config:
+      microservice-provider-user:
+        loggerLevel: full
