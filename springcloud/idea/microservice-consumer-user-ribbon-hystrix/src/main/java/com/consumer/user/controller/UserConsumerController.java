@@ -36,6 +36,11 @@ public class UserConsumerController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
+    /**
+     * Hystrix监控：http://localhost:8010/hystrix.stream
+     * @param id
+     * @return
+     */
     @HystrixCommand(fallbackMethod = "findByIdFallback")
     @GetMapping("/user/{id}")
     public User findById(@PathVariable Long id){
