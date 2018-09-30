@@ -6,6 +6,13 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.context.annotation.Configuration;
 
+/**
+* http://localhost:8988/hystrix.stream
+*
+* http://localhost:8991/turbine.stream
+*
+*
+*/
 @Configuration
 @EnableAutoConfiguration
 @EnableTurbine
