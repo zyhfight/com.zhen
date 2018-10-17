@@ -163,6 +163,7 @@ public class SingleLinked {
             Node tmp = head;
             head = head.next;
             tmp.next = null;
+            return;
         }
 
         //遍历链表，找到要删除的p结点
