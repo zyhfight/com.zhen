@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: gateway-config
+  profiles:
+    active: local
+  cloud:
+      bus:
+        trace:
+          enabled: true

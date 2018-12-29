@@ -1,0 +1,49 @@
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8071/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.int}
+
+# 刷新时，是否关闭安全认证
+management:
+  security:
+    enabled: true
+
+# 如果 不设置，会在启动时产生一个随机密码，用户名默认user
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: haha
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: 
+          username: 
+          password: 
+          search-paths: 
+  rabbitmq:
+    host: 
+    port: 
+    username: 
+    password: 
+    virtual-host: 
+
+#encrypt:
+#  key: haha #对称加密密钥
+
+#非对称加密
+encrypt:
+  key-store:
+    location: classpath:/server.jks
+    password: root123
+    alias: testkey
+    secret: upupup
