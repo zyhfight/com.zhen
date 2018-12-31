@@ -1,20 +1,21 @@
 /**
- * ˫�ؼ���������ģʽ
+ * 双重检查加锁单例模式
  */
 package DesignPatterns.SingletonPattern;
 /**
- * ��һ�μ�鲻ͬ�������뷽�������ж�ʵ���Ƿ���ڣ��������ڲŽ�������ͬ�������
- * �ڶ��μ��ͬ��������ͬ���������ټ��ʵ���Ƿ���ڣ��������ڣ�����ͬ������´���ʵ��
- * ������ֻ��Ҫͬ��һ���ˣ���synchronizedͬ������������ߺܶ�
+ * 第一次检查不同步，进入方法后，先判断实例是否存在，若不存在才进入下面同步代码块
+ * 第二次检查同步，进入同步代码块后，再检查实例是否存在，若不存在，就在同步情况下创建实例
+ * 这样就只需要同步一次了，比synchronized同步方法性能提高很多
  * 
- * ����ʹ��volatile�ؼ��֣�
- * new DoubleCheckedSingleton()��ԭ�Ӳ���
- * ��������instance�����ڴ棻
- * 	        ���ù��캯����ʼ����Ա����
- *     ��instance����ָ�������ڴ�ռ䣨���ʵ��������
- * ����ʹ��volatile�ؼ��֣���֤�����ɼ������Ⲣ�����⡣
+ * 变量使用volatile关键字：
+ * new DoubleCheckedSingleton()非原子操作
+ * 包括：给instance分配内存；
+ * 	        调用构造函数初始化成员变量
+ *     将instance对象指向分配的内存空间（完成实例创建）
+ * 所以使用volatile关键字，保证变量可见，避免并发问题。
  * 
- * ĳЩƽ̨�ͱ��������ܲ�֧��
+ * volatile关键字会屏蔽掉jvm所做的代码优化，可能会导致运行效率降低 
+ *
  */
 public class DoubleCheckedSingleton {
 	private DoubleCheckedSingleton(){}
