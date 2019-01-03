@@ -4,13 +4,15 @@ import java.util.Stack;
 
 public class Sorts {
 	/*
-	 * Ã°ÅİÅÅĞò
+	 * å†’æ³¡æ’åº
 	 */
 	public void bubbSort(int a[])
 	{
 		if(a==null)return;
 		for(int i=0;i<a.length;i++)
 		{
+			boolean flag = false;
+
 			for(int j=i+1;j<a.length;j++)
 			{
 				if(a[j]<a[i])
@@ -22,13 +24,16 @@ public class Sorts {
 					a[i]=a[i]^a[j];
 					a[j]=a[i]^a[j];
 					a[i]=a[i]^a[j];
+					flag = true; //æœ‰æ•°æ®äº¤æ¢
 					 
 				}
 			}
+			
+			if (!flag) break; // æ²¡æœ‰æ•°æ®äº¤æ¢ï¼Œæå‰é€€å‡ºå¾ªç¯
 		}
 	}
 	/*
-	 * Ñ¡ÔñÅÅĞò
+	 * é€‰æ‹©æ’åº
 	 */
 	public void selectSort(int a[])
 	{
@@ -52,7 +57,7 @@ public class Sorts {
 		}
 	}
 	/*
-	 * ²åÈëÅÅĞò
+	 * æ’å…¥æ’åº
 	 */
 	public void insertSort(int a[])
 	{
@@ -72,7 +77,7 @@ public class Sorts {
 		}
 	}
 	/*
-	 * Ï£¶ûÅÅĞò
+	 * å¸Œå°”æ’åº
 	 */
 	public void shellSort(int a[])
 	{
@@ -95,9 +100,9 @@ public class Sorts {
 		}
 	}
 	/*
-	 * ¿ìËÙÅÅĞò
+	 * å¿«é€Ÿæ’åº
 	 */
-	//»ñÈ¡¿ìÅÅ·Ö¸ôÏß
+	//è·å–å¿«æ’åˆ†éš”çº¿
 	private int partition(int a[],int low,int high)
 	{
 		int key=a[low];
@@ -113,7 +118,7 @@ public class Sorts {
 		a[low]=key;
 		return low;
 	}
-	 //µİ¹éÊµÏÖ
+	 //é€’å½’å®ç°
 	public void quickSortRecursion(int a[],int low,int high)
 	{
 		if(a==null) return;
@@ -124,7 +129,7 @@ public class Sorts {
 			quickSortRecursion(a,mid+1,high);
 		}
 	}
-	//·Çµİ¹éÊµÏÖ
+	//éé€’å½’å®ç°
 	public void quickSortNonRecursion(int a[])
 	{
 		if(a==null) return;
@@ -151,7 +156,7 @@ public class Sorts {
 		}
 	}
 	/*
-	 * ¶ÑÅÅĞò
+	 * å †æ’åº
 	 */
 	private int heapPartition(int a[],int n)
 	{
@@ -185,7 +190,7 @@ public class Sorts {
 		}
 	}
 	/*
-	 * ¹é²¢ÅÅĞò
+	 * å½’å¹¶æ’åº
 	 */
 	private void mergePartition(int a[],int p,int q,int r)
 	{
